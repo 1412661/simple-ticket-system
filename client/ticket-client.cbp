@@ -2,13 +2,13 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="HTTPClient" />
+		<Option title="ticket-client" />
 		<Option makefile_is_custom="1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="./1412661" prefix_auto="0" extension_auto="0" />
+				<Option output="./ticket-client" prefix_auto="0" extension_auto="0" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -17,7 +17,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="./1412661" prefix_auto="1" extension_auto="1" />
+				<Option output="./ticket-client" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -32,18 +32,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="HTTPClient.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="Makefile" />
 		<Unit filename="const.h" />
 		<Unit filename="function.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="function.h" />
-		<Unit filename="linklist.c">
+		<Unit filename="ticket-client.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="linklist.h" />
 		<Unit filename="type.h" />
 		<Extensions>
 			<envvars />

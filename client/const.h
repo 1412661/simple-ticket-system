@@ -3,12 +3,10 @@
 
 /**
  * @file const.h
- * @brief Constants definition for HTTPClient
+ * @brief Constants definition for ticket-client
  */
 
-#define BUFFSIZE 300			// Max buffer size for variable in stack memory
-#define REGEX_MAX_MATCH 50		// Max regular expression matching group (include
-								// full match and group match)
-#define MSSV "1412661"			// My student code
+#define BUFFSIZE_VAR 200		// Buffer size to store variable
+#define BUFFSIZE_DATA 1000		// Buffer size to store data
 
 #endif // _CONST_H_

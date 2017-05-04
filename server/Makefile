@@ -10,21 +10,21 @@ IGNORE = -Wno-incompatible-pointer-types -Wno-pointer-to-int-cast -Wno-int-to-po
 ARGS = -std=c99
 
 all:
-	$(CC) $(IGNORE) $(ARGS) -c webserver.c $(LIBS)
+	$(CC) $(IGNORE) $(ARGS) -c ticket-server.c $(LIBS)
 	$(CC) $(IGNORE) $(ARGS) -c function.c $(LIBS)
-	$(CC) $(IGNORE) $(ARGS) -o webserver webserver.o function.o $(LIBS)
+	$(CC) $(IGNORE) $(ARGS) -o ticket-server ticket-server.o function.o $(LIBS)
 	@rm *.o
 
 Release:
-	$(CC) $(IGNORE) $(ARGS) -c webserver.c $(LIBS)
+	$(CC) $(IGNORE) $(ARGS) -c ticket-server.c $(LIBS)
 	$(CC) $(IGNORE) $(ARGS) -c function.c $(LIBS)
-	$(CC) $(IGNORE) $(ARGS) -o webserver webserver.o function.o $(LIBS)
+	$(CC) $(IGNORE) $(ARGS) -o ticket-server ticket-server.o function.o $(LIBS)
 	@rm *.o
 
 Debug:
-	$(CC) $(ARGS) -g -c webserver.c $(LIBS)
+	$(CC) $(ARGS) -g -c ticket-server.c $(LIBS)
 	$(CC) $(ARGS) -g -c function.c $(LIBS)
-	$(CC) $(ARGS) -g -o webserver webserver.o function.o $(LIBS)
+	$(CC) $(ARGS) -g -o ticket-server ticket-server.o function.o $(LIBS)
 	@rm *.o
 
 cleanDebug:
