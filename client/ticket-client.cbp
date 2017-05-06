@@ -5,6 +5,7 @@
 		<Option title="ticket-client" />
 		<Option makefile_is_custom="1" />
 		<Option pch_mode="2" />
+		<Option default_target="Release" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
@@ -12,6 +13,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="127.0.0.1 8081" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -21,6 +23,7 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="127.0.0.1 8081" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
@@ -41,6 +44,7 @@
 		<Unit filename="ticket-client.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="ticket.h" />
 		<Unit filename="type.h" />
 		<Extensions>
 			<envvars />

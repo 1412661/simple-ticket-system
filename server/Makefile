@@ -28,7 +28,7 @@ Debug:
 	@rm *.o
 
 cleanDebug:
-	sh/clean.sh
+	../clean.sh || :
 
 cleanRelease:
-	sh/clean.sh
+	../clean.sh || :

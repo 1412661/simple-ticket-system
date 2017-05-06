@@ -32,6 +32,7 @@ http://stackoverflow.com/questions/9681531/graceful-shutdown-server-socket-in-li
 #include "const.h"
 #include "type.h"
 #include "function.h"
+#include "ticket.h"
 
 // Start socket server
 void startServer(int port);
@@ -45,6 +46,18 @@ pthread_mutex_t mutex;		// Mutex to lock thread manager
 
 int keepRunning = 1;
 //static volatile int keepRunning = 1;
+
+
+struct TicketSystem db =
+{
+	"TPHCM - Ha Noi",
+	{{50, 100},{80, 80},{40, 60}},
+	"TPHCM - Hue",
+	{{35, 60},{54, 50},{48, 40}},
+	"Ha Noi - Da Lat",
+	{{70, 120},{50, 90},{30, 70}}
+};
+
 
 void intHandler()
 {
@@ -69,8 +82,11 @@ void intHandler()
 int main(int argc, char* argv[])
 {
     // Warning about current working folder
+    printf("-----------------------------------------\n");
+    printf("|    Welcome to Simple Ticket System    |\n");
+    printf("-----------------------------------------\n");
     printf("[INFO] Max connection: %d\n", CONNMAX);
-    printf("[INFO] Last build: 11:54pm 22.04.2017.\n");
+    printf("[INFO] Last build: 07:05 am 06.05.2017.\n");
 
     // Put a trap for SIGINT (Ctrl+C)
     signal(SIGINT, intHandler);
@@ -189,11 +205,46 @@ void respond(void* arg)
     else
     {
         printf("-----------------------------------\n");
+        printf("[INFO] Client request: %s\n", mesg);
 
+        if (strcmp(mesg, "list") == 0)
+		{
+			write(data->socketfd, (char*)&db, sizeof(struct TicketSystem));
+		} else
+		{
+			char route;
+			char ticket;
+			int cost;
+			int amount;
+			char buyCommand[4];
+			char response[BUFFSIZE_VAR];
 
-        //process with "mesg"
+            sscanf(mesg, "%s %c %c %d", buyCommand, &route, &ticket, &amount);
+			if ((strcmp("buy", buyCommand) == 0) && route >= '1' && route <= '3' && ticket >= 'A' && ticket <= 'C' && amount > 0)
+			{
+				pthread_mutex_lock(&mutex);
+				if (db.route[route-'1'].ticket[ticket-'A'].amount >= amount)
+				{
+					db.route[route-'1'].ticket[ticket-'A'].amount -= amount;
+					cost = db.route[route-'1'].ticket[ticket-'A'].cost * amount;
 
+                    sprintf(response, "%d", cost);
 
+					write(data->socketfd, response, strlen(response));
+				} else
+				{
+					response[0] = '0';
+					sprintf(response+1, "%d", db.route[route-'1'].ticket[ticket-'A'].amount);
+					write(data->socketfd, response, strlen(response));
+				}
+
+				printf("[INFO] Server response: %s\n", response);
+				pthread_mutex_unlock(&mutex);
+			} else
+			{
+                printf("[WARN] Invalid buy command from client: %s\n", mesg);
+			}
+		}
     }
 
     // Shutdown send/receive function on the socket

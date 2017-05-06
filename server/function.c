@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include <string.h>
-#include <pthread.h>
 #include <stdlib.h>
 
 #include "const.h"
@@ -24,20 +22,6 @@ char* clone(char* buffer, unsigned int size, unsigned int padding)
     * Sometime, str1 is in raw format without string termination character '\0'
     */
     return memcpy((char*)malloc(sizeof(char)*(size+padding)), buffer, size);
-}
-
-/**
- * Get the first line of a HTTP request
- * @param HTTP request
- * @return First line of the HTTP request
- */
-char* extractRequest(char* mesg)
-{
-    char* lineBreak = strstr(mesg, "\r");
-    char* request = clone(mesg, lineBreak-mesg+1, 1);
-    request[lineBreak-mesg+1] = '\0';
-
-    return request;
 }
 
 /*char* char_replace(char search, char replace, char* subject)

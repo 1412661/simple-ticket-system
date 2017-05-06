@@ -3,7 +3,7 @@
 
 /**
  * @file const.h
- * @brief Constants definition for SimpleWebServer
+ * @brief Constants definition
  */
 
 #define DEBUG_MODE
@@ -12,7 +12,7 @@
 #define BUFFSIZE_DATA 	1024			// Max buffer size for data
 #define BUFFSIZE_VAR	200				// Max buffer size for variables
 
-#define DEFAULT_PORT	9999
-#define CONNMAX 50
+#define DEFAULT_PORT	9999			// Default port
+#define CONNMAX 50						// Max connection
 
 #endif // _CONST_H_

@@ -3,7 +3,7 @@
 
 /**
  * @file function.h
- * @brief Provide function prototype
+ * @brief Function prototype
  */
 
 /**

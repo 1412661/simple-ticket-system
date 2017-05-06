@@ -19,3 +19,9 @@ Debug:
 	$(CC) $(ARGS) -g -c ticket-client.c $(LIBS)
 	$(CC) $(ARGS) -g -o ticket-client function.o ticket-client.o $(LIBS)
 	@rm *.o
+
+cleanDebug:
+	../clean.sh || :
+
+cleanRelease:
+	../clean.sh || :

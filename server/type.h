@@ -1,8 +1,13 @@
 #ifndef _TYPE_H_
 #define _TYPE_H_
 
+#include <pthread.h>
 #include "const.h"
 
+/**
+ * @file type.h
+ * @brief Datata structure definition
+ */
 
 struct ThreadList
 {
